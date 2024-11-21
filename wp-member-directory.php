@@ -2,6 +2,7 @@
 /*
  * Plugin Name:       Member Directory
  * Description:       Filter Member
+ * Author:            Pradip Prajapati
  * Version:           1.10.3
  * Requires at least: 5.2
  * Requires PHP:      7.2
