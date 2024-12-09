@@ -30,6 +30,7 @@ position: relative;
     line-height: 3;
     color: #ffffff;
     font-size: 15px;
+    border-radius: 7px;
 }
 
 .member-inner1 {
@@ -81,10 +82,11 @@ input[type="submit"] {
     color: white;
     border: none;
     cursor: pointer;
+    
 }
 
 button#search-btn:hover {
-    background-color: #005177;
+    background-color: #334a5b;
     color:white;
 }
 form#member-search-form {
@@ -99,7 +101,7 @@ form#member-search-form {
 
 input#member-search-text {
     padding: 11px 20px;
-    border-radius: 10px;
+    border-radius: 7px;
     background: #ffffff;
  
 }
@@ -107,14 +109,17 @@ input#member-search-text {
 select#member-category{
 
  padding: 11px 20px;
-    border-radius: 10px;
+    border-radius: 7px;
     background: #ffffff;
 }
 button#search-btn {
     background: #c2842a;
     padding: 10px 49px;
-    border-radius: 10px;
+    border-radius: 7px;
 color:white;
+border: 0px solid;
+cursor: pointer;
+box-shadow: 0px 10px 20px -15px rgba(0, 0, 0, 0.5);
 }
 
 p.notfounddata {
@@ -147,12 +152,30 @@ span.premium-member-label {
     margin-left: 5px;
 }
 
-.radius-img img {
-    border-radius: 87px !important;
+.radius-img img{
+        border-radius: 87px;
+}
+.oxy-dynamic-list :is([data-id="text_block-19-1113"],#incspec) {
+   
+    background: #c2842a;
+    padding: 5px 19px;
+    color: white !important;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.oxy-dynamic-list :is([data-id="text_block-19-1113"],#incspec):hover {
+    background: #334a5b;
+    opacity: 1;
 }
 @media only screen and (max-width: 600px) {
+p.notfounddata{
+
+width:85vw;
+}
   .member {
-    width: 100%;
+    width: 95%;
+        margin-top: 20px;
 }
 form#member-search-form{
 width: unset;

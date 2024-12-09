@@ -62,9 +62,12 @@ add_action('wp_enqueue_scripts', 'wp_member_directory_enqueue_styles');
 function presidents_circle_shortcode($atts) {
     // Shortcode attributes
     $atts = shortcode_atts(array(
-        'posts_per_page' => 10,  // Default number of posts per page
+        'posts_per_page' => -1,  // Default number of posts per page
         'category' => '',  // Category filter (if any)
-        'search' => '',  // Search term filter
+        'search' => '', 
+        'orderby' => 'title', // Sort by title (name)
+        'order' => 'ASC',
+         // Search term filter
     ), $atts, 'member_directory');
 
     // Query arguments
@@ -72,6 +75,8 @@ function presidents_circle_shortcode($atts) {
         'post_type' => 'member',  // Your custom post type "member"
         'posts_per_page' => $atts['posts_per_page'],
         'post_status' => 'publish',
+        'orderby' => 'title', // Sort by title (name)
+        'order' => 'ASC',
     );
 
     // Filter by the "President's Circle" category (assuming you know the slug)
@@ -127,7 +132,7 @@ function presidents_circle_shortcode($atts) {
                             <p class='category'>Category: <?php echo esc_html($categories[0]->name); ?></p>
                         <?php endif; ?>
                         <div class='member-url'>
-                            <a href='<?php echo esc_url($member_url); ?>' target="_blank">Visit Profile</a> 
+                            <a href='<?php echo esc_url($member_url); ?>' target="_blank">Visit Website</a> 
                         </div>
                     </div> 
                 
@@ -216,9 +221,11 @@ add_shortcode('member_search_form', 'member_search_form_shortcode');
 function member_directory_shortcode($atts) {
     // Shortcode attributes
     $atts = shortcode_atts(array(
-        'posts_per_page' => 10,  // Default number of posts per page
+        'posts_per_page' => -1,      // Default number of posts per page
         'category' => '',        // Category filter (if any)
-        'search' => '',          // Search term filter
+        'search' => '',   
+        'order' => 'ASC', 
+        'orderby' => 'title',      // Search term filter
     ), $atts, 'member_directory');
 
     // Retrieve search and category filter values from the current POST request
@@ -238,6 +245,8 @@ function member_directory_shortcode($atts) {
         'post_type' => 'member',  // Your custom post type "member"
         'posts_per_page' => $atts['posts_per_page'],
         'post_status' => 'publish',
+        'orderby' => 'title',
+        'order' => 'ASC',
     );
 
     // Apply category filter if provided
@@ -299,7 +308,7 @@ function member_directory_shortcode($atts) {
                         <p class='category'>Category: <?php echo esc_html($categories[0]->name); ?></p>
                         <?php endif; ?>
                         <div class='member-url'>
-                            <a href='<?php echo esc_url($member_url); ?>' target="_blank">Visit Profile</a> 
+                            <a href='<?php echo esc_url($member_url); ?>' target="_blank">Visit Website</a> 
                         </div>
                     </div>
                     <div class="member-inner2">
@@ -347,6 +356,8 @@ function handle_member_search_ajax() {
         'post_type' => 'member',  // Your custom post type "member"
         'posts_per_page' => -1,   // Get all matching posts (or set a limit)
         'post_status' => 'publish',
+        'orderby' => 'title',
+        'order' => 'ASC',
     );
 
     // Exclude the "President's Circle" category
@@ -399,7 +410,7 @@ function handle_member_search_ajax() {
                         <p class='category'>Category: <?php echo esc_html($categories[0]->name); ?></p>
                         <?php endif; ?>
                         <div class='member-url'>
-                            <a href='<?php echo esc_url($member_url); ?>' target="_blank">Visit Profile</a> 
+                            <a href='<?php echo esc_url($member_url); ?>' target="_blank">Visit Website</a> 
                         </div>
                     </div>
                     <div class="member-inner2">
